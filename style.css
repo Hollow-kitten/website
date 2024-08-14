@@ -1,7 +1,7 @@
 
 
 body {
-    background-image: url("../image/background/pattern.svg");
+    background-image: url("image/background/pattern.svg");
     background-color: black;
     background-repeat: repeat-x;
     background-position-y: -75px
