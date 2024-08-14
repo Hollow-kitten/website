@@ -1,0 +1,175 @@
+
+
+body {
+    background-image: url("../image/background/pattern.svg");
+    background-color: black;
+    background-repeat: repeat-x;
+    background-position-y: -75px
+}
+
+.top-div {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 80px;
+}
+
+.pp {
+    box-shadow: 6px 5px gray;
+    border-radius: 20px;
+}
+
+.title {
+    font-size: 80px;
+    font-style: oblique;
+}
+
+.seconde-title {
+    display: flex;
+    justify-content: center;
+    margin-top: 400px;
+    font-size: 60px;
+    text-shadow: 2px 2px gray;
+    color: white;
+}
+
+.separator-project {
+    width: 80%;
+
+}
+
+.grid-project {
+    cursor: pointer;
+    display: grid;
+    color: white;
+    justify-content: space-evenly;
+    margin-top: 100px;
+}
+
+.project-one {
+    border: 2px solid white; 
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-right: 50px;
+    padding-left: 50px;
+    border-radius: 10px;
+    box-shadow: 10px 10px gray;
+    background-color: beige;
+    color: black;
+    grid-row: 1;
+    grid-column: 1;    
+}
+
+.project-one:hover , .project-two:hover , .project-three:hover{
+    background-color: gray;
+    box-shadow: 10px 10px black;
+}
+
+.tic-tac-toe {
+    width: 120px;
+}
+
+.tic-tac-toe-text1 {
+    font-size: 25px;
+    font-style: oblique;
+    font-weight: bold;
+}
+
+.tic-tac-toe-text2 {
+    font-size: 25px;
+    font-style: oblique;
+    font-weight: bold;
+}
+
+.project-two {
+    border: 2px solid white; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-right: 30px;
+    padding-left: 30px;
+    border-radius: 10px;
+    box-shadow: 10px 10px gray;
+    background-color: beige;
+    grid-row: 1;
+    grid-column: 2;
+    color: black;
+}
+
+.website-text1 {
+    font-size: 30px;
+    font-style: oblique;
+    font-weight: bold;
+}
+
+.website-text2 {
+    font-size: 30px;
+    font-style: oblique;
+    font-weight: bold;
+}
+
+.website-html {
+    width: 90px;
+}
+
+.website-css {
+    width: 90px;
+}
+
+.project-three {
+    border: 2px solid white; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-right: 40px;
+    padding-left: 40px;
+    border-radius: 10px;
+    box-shadow: 10px 10px gray;
+    background-color: beige;
+    grid-row: 1;
+    grid-column: 3;
+}
+
+.wip {
+    width: 160px;
+}
+
+.skill {
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    
+}
+
+.skill-title {
+    margin-top: 150px;
+    color: white;
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+    text-shadow: 2px 2px gray;
+    color: white;
+}
+
+.separator-skill {
+    width: 60%;
+}
+
+.skill-tools {
+    color: black;
+    background-color: beige;
+    box-shadow: 10px 10px gray;
+    border: solid white;
+    padding-top: 100px;
+    padding-right: 100px;
+    padding-left: 100px;
+    padding-bottom: 100px;
+    border-radius: 10px;
+}
+
+.icons-skill {
+    width: 100px;
+}
