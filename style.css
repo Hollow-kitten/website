@@ -1,10 +1,10 @@
 
 
 body {
-    background-image: url("../image/background/pattern.svg");
-    background-color: black;
+    background-image: url("image/background/pattern.svg");
+    background-color: #0f0f0f;
     background-repeat: repeat-x;
-    background-position-y: -75px
+    background-position-y: -125px
 }
 
 .top-div {
@@ -51,8 +51,8 @@ body {
     display: flex;
     align-items: center;
     flex-direction: column;
-    padding-right: 50px;
-    padding-left: 50px;
+    padding-right: 40px;
+    padding-left: 30px;
     border-radius: 10px;
     box-shadow: 10px 10px gray;
     background-color: beige;
@@ -63,22 +63,16 @@ body {
 
 .project-one:hover , .project-two:hover , .project-three:hover{
     background-color: gray;
-    box-shadow: 10px 10px black;
+    box-shadow: 0px 0px 20px white;
 }
 
 .tic-tac-toe {
     width: 120px;
 }
 
-.tic-tac-toe-text1 {
+.tic-tac-toe-text1 , .tic-tac-toe-text2 {
     font-size: 25px;
-    font-style: oblique;
-    font-weight: bold;
-}
-
-.tic-tac-toe-text2 {
-    font-size: 25px;
-    font-style: oblique;
+    font-family: 'Trebuchet MS', sans-serif;
     font-weight: bold;
 }
 
@@ -98,15 +92,9 @@ body {
     color: black;
 }
 
-.website-text1 {
-    font-size: 30px;
-    font-style: oblique;
-    font-weight: bold;
-}
-
-.website-text2 {
-    font-size: 30px;
-    font-style: oblique;
+.website-text1 , .website-text2 {
+    font-size: 25px;
+    font-family: 'Trebuchet MS', sans-serif;
     font-weight: bold;
 }
 
@@ -172,4 +160,32 @@ body {
 
 .icons-skill {
     width: 100px;
+}
+
+.footer {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-separator {
+    width: 50%;
+    margin-top: -10px;
+}
+
+.contact {
+    display: flex;
+    justify-content: center;
+    margin-top: 120px;
+    color: white;
+    font-size: 50px;
+    text-shadow: 2px 2px gray;
+}
+
+.troll {
+    display: flex;
+    justify-content: center;
+    margin-top: 120px;
+    color: white;
+    font-size: 30px;
+    text-shadow: 2px 2px gray;
 }
