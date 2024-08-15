@@ -3,6 +3,7 @@
 body {
     background-image: url("image/background/pattern.svg");
     background-color: #0f0f0f;
+    background-color: black;
     background-repeat: repeat-x;
     background-position-y: -125px
 }
@@ -162,6 +163,7 @@ body {
     width: 100px;
 }
 
+
 .footer {
     display: flex;
     flex-direction: column;
@@ -189,3 +191,4 @@ body {
     font-size: 30px;
     text-shadow: 2px 2px gray;
 }
+
