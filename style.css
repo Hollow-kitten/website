@@ -115,6 +115,34 @@ body {
     grid-row: 1;
     grid-column: 3;
 }
+.wip {
+    color: black;
+    font-size: 40px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold; 
+}
+
+.try-yourself-div {
+    border: solid #0f0f0f 2px;
+    background-color: cyan;
+}
+
+.try-yourself {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 30px;
+
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+}
+
+.try-yourself-div:hover {
+    background-color: lightblue;
+    box-shadow: 5px 5px gray;
+}
 
 .skill {
     margin-top: 100px;
@@ -189,31 +217,3 @@ body {
     color: white;
 }
 
-.wip {
-    color: black;
-    font-size: 40px;
-    font-family: 'Roboto', sans-serif;
-    font-weight: bold; 
-}
-
-.try-yourself-div {
-    border: solid #0f0f0f 2px;
-    background-color: cyan;
-}
-
-.try-yourself {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    margin-left: 10px;
-    margin-right: 10px;
-    font-size: 30px;
-
-    text-decoration: none;
-    font-family: 'Roboto', sans-serif;
-    font-weight: bold;
-}
-
-.try-yourself-div:hover {
-    background-color: lightblue;
-    box-shadow: 5px 5px gray;
-}
