@@ -191,3 +191,9 @@ body {
     text-shadow: 2px 2px gray;
 }
 
+.discord {
+    display: flex;
+    align-self: center;
+    margin-top: 50px;
+    color: white;
+}
