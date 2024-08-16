@@ -1,12 +1,21 @@
 
+body {
+    background-color: green;
+}
+
 .back {
     display: flex;
-    justify-content: center;
+    position: absolute; left: 0;
     border: solid 1px;
     margin-top: 20px;
     margin-left: 20px;
+    background-color: cyan;
+
 }
 
 .back-button {
-
+    display: flex;
+    margin: 10px;
+    margin-right: 50px;
+    font-size: 25px;
 }
