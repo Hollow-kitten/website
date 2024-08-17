@@ -5,12 +5,18 @@ body {
 
 .back {
     display: flex;
-    position: absolute; left: 0;
-    border: solid 1px;
+    border: solid;
+    border-color: #0f0f0f;
+    border-radius: 60px;
     margin-top: 20px;
     margin-left: 20px;
     background-color: cyan;
+    width: 75px;
 
+}
+
+.back:hover {
+    background-color: lightblue;
 }
 
 .back-button {
