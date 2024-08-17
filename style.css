@@ -143,6 +143,7 @@ body {
 .try-yourself-div:hover {
     background-color: lightblue;
     box-shadow: 5px 5px gray;
+    cursor:pointer
 }
 
 .skill {

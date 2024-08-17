@@ -16,9 +16,15 @@ body {
 
 .back:hover {
     background-color: lightblue;
+    cursor:pointer
 }
 
 .back-button {
+    position:absolute; left;
+    text-decoration: none;
+}
+
+.back-text {
     text-decoration: none;
     display: flex;
     margin: 10px;
