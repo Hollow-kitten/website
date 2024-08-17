@@ -137,6 +137,7 @@ body {
     text-decoration: none;
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
+    color: black;
 }
 
 .try-yourself-div:hover {

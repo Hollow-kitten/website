@@ -12,7 +12,6 @@ body {
     margin-left: 20px;
     background-color: cyan;
     width: 75px;
-
 }
 
 .back:hover {
@@ -20,8 +19,12 @@ body {
 }
 
 .back-button {
+    text-decoration: none;
     display: flex;
     margin: 10px;
     margin-right: 50px;
     font-size: 25px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    color: black;
 }
