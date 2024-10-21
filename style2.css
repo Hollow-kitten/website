@@ -1,6 +1,6 @@
 
 body {
-    background-color: green;
+    background-color: beige;
 }
 
 .back {
@@ -20,7 +20,9 @@ body {
 }
 
 .back-button {
-    position:absolute; left;
+    display: flex;
+    width: fit-content;
+    height: -20px;
     text-decoration: none;
 }
 
