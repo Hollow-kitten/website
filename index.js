@@ -19,7 +19,11 @@ function makeAGrid(row, column){
 }
 
 function buttonIsPressed(button) {
-    button.style.backgroundColor = "white";
+    if(button.style.backgroundColor === "rgb(75, 65, 63)"){
+        button.style.backgroundColor = "white";
+    } else {
+        button.style.backgroundColor = "#4b413f";
+    }
 }
 
 makeAGrid(25, 25)
