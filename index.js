@@ -1,6 +1,4 @@
 
-const trucDeTest = ["chat", "potichat", "chaton", "cat"]
-
 function makeAGrid(row, column){
     const mainGrid = document.getElementById("grid-button")
     mainGrid.style.display = "grid";
@@ -9,9 +7,9 @@ function makeAGrid(row, column){
     mainGrid.style.placeContent = `center`;
 
     for(r = 0; r < (row*column); r++) {
-            const cell = document.createElement("div")
-            cell.style.border = "solid";
-            cell.style.backgroundColor = "Grey";
+            const cell = document.createElement("button")
+            cell.onclick = () => {buttonIsPressed(cell)}
+            cell.style.backgroundColor = "#4b413f";
             cell.style.paddingRight = "5px";
             cell.style.paddingLeft = "5px";
             cell.style.paddingTop = "15px";
@@ -19,4 +17,9 @@ function makeAGrid(row, column){
             mainGrid.appendChild(cell)
     }
 }
+
+function buttonIsPressed(button) {
+    button.style.backgroundColor = "white";
+}
+
 makeAGrid(25, 25)
