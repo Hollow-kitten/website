@@ -37,3 +37,15 @@ body {
     color: black;
 }
 
+.conyway-div {
+    display: flex;
+    justify-content: center;
+    column-gap: 60px;
+    padding-top: 30px;
+}
+
+.conyway-button {
+    font-size: 3Opx;
+    width: 150px;
+    height: 150px;
+}
