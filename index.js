@@ -9,11 +9,13 @@ function makeAGrid(row, column){
     for(r = 0; r < (row*column); r++) {
             const cell = document.createElement("button")
             cell.addEventListener("click", function(){buttonIsPressed(cell)})
+            cell.innerHTML = `${r}`
+            cell.style.color = "white";
             cell.style.backgroundColor = "#4b413f";
             cell.style.paddingRight = "5px";
             cell.style.paddingLeft = "5px";
             cell.style.paddingTop = "15px";
-            cell.style.paddingBottom = "15px"
+            cell.style.paddingBottom = "15px";
             mainGrid.appendChild(cell)
     }
 }
@@ -39,6 +41,8 @@ function resetcolor() {
     allbutton.forEach( function(button){
         button.style.backgroundColor = "#4b413f";
     });
+    start.style.backgroundColor = "White";
+    stop.style.background = "White";
 }
 
 function startButton(){
@@ -50,5 +54,16 @@ function StopButton(){
     start.style.backgroundColor = "White";
     stop.style.background = "Red";
 }
+
+function checkCell(element){
+    if(element.style.backgroundColor = "rgb(75, 65, 63)"){
+        return false
+    } else {
+        return true
+    }
+}
+
+// optimisation ? I dont know and I dont wanna know
+function generation(){}
 
 makeAGrid(25, 25)
