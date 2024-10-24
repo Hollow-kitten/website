@@ -31,12 +31,24 @@ const stop = document.getElementById("Stop")
 const reset = document.getElementById("Reset")
 
 reset.addEventListener("click", resetcolor)
+start.addEventListener("click", startButton)
+stop.addEventListener("click", StopButton)
 
 function resetcolor() {
     const allbutton = document.getElementById("grid-button").querySelectorAll("button")
     allbutton.forEach( function(button){
         button.style.backgroundColor = "#4b413f";
     });
+}
+
+function startButton(){
+    start.style.backgroundColor = "Green";
+    stop.style.background = "White";
+}
+
+function StopButton(){
+    start.style.backgroundColor = "White";
+    stop.style.background = "Red";
 }
 
 makeAGrid(25, 25)
