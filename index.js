@@ -62,11 +62,7 @@ function StopButton(){
 }
 
 function checkCell(element){
-    if(element.style.backgroundColor === "rgb(75, 65, 63)"){
-        return false
-    } else {
-        return true
-    }
+    return element.style.backgroundColor === "white"
 }
 
 // check les cellule a coter de la case avec une boucle for qui fait id - le -26 -25 -24 -1 +1 +26 +25 +24 + appele de la fonction pour savoir si une celule morte ou vivantes
@@ -74,20 +70,21 @@ function checkCell(element){
 function generation(){
     const button = document.getElementById("grid-button").querySelectorAll("button")
     const checkList = [-26, -25, -24, -1, 1, 24, 25, 26]
+    
     button.forEach(function(element){
 
        let buttonId = element.id 
-            for(a = 0; a < 3; a++){
-                let buttonIdCheck = +element.id + +checkList[a]
+            for(check of checkList){
+                let buttonIdCheck = Number(element.id) + check
                 const elementIdCheck = document.getElementById(`${buttonIdCheck}`)
+                
                 if(elementIdCheck !== null){
-                    console.log(checkCell(elementIdCheck), elementIdCheck.id)
-                    
-                } else{console.log("case vide")}
+                    if(checkCell(elementIdCheck)){
+                        console.log(elementIdCheck, buttonId)
+                    }
+                } else{console.log("hors piste")}
         }
     })
 }
-
-
 
 makeAGrid(25,25)
