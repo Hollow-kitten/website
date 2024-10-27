@@ -78,16 +78,18 @@ function generation(){
             for(check of checkList){
                 let buttonIdCheck = Number(element.id) + check
                 const elementIdCheck = document.getElementById(`${buttonIdCheck}`)
-                const buttonId = document.getElementById(element.id)
+                const button = document.getElementById(element.id)
 
                 if(elementIdCheck !== null){
                     if(checkCell(elementIdCheck)) {
                         countCell++;
-                        if (countCell === 2 || countCell === 3) {
-                            console.log(elementIdCheck, buttonId)
-                            buttonId.style.backgroundColor = "White";
+                        if (countCell === 3) {
+                            console.log(elementIdCheck, button)
+                            button.style.backgroundColor = "White";
+                        } else if (countCell === 2 && checkCell(button)) {
+                            button.style.backgroundColor = "White";
                         } else {
-                            buttonId.style.backgroundColor = "#4b413f"
+                            button.style.backgroundColor = "#4b413f"
                         }
                     }
                 } else{console.log("hors piste")}
