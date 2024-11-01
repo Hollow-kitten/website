@@ -1,6 +1,4 @@
 
-const kohLanta = []
-
 const start = document.getElementById("Start")
 const stop = document.getElementById("Stop")
 const reset = document.getElementById("Reset")
@@ -69,6 +67,8 @@ function StopButton(){
 function checkCell(element){
     return element.style.backgroundColor === "white"
 }
+
+// check les cellule a coter de la case avec une boucle for qui fait id - le -26 -25 -24 -1 +1 +26 +25 +24 + appele de la fonction pour savoir si une celule morte ou vivantes
 
 function generation(){
     const button = document.getElementById("grid-button").querySelectorAll("button")
