@@ -1,4 +1,6 @@
 
+const kohLanta = []
+
 const start = document.getElementById("Start")
 const stop = document.getElementById("Stop")
 const reset = document.getElementById("Reset")
@@ -35,8 +37,10 @@ function makeAGrid(row, column){
 function buttonIsPressed(button) {
     if(button.style.backgroundColor === "rgb(75, 65, 63)"){
         button.style.backgroundColor = "white";
+        button.setAttribute("class", "AliveCell")
     } else {
         button.style.backgroundColor = "#4b413f";
+        button.setAttribute("class", "DeadCell")
     }
 }
 
@@ -54,6 +58,7 @@ function startButton(){
     start.style.backgroundColor = "Green";
     stop.style.background = "White";
     generation()
+    trueGeneration(kohLanta)
 }
 
 function StopButton(){
@@ -65,34 +70,50 @@ function checkCell(element){
     return element.style.backgroundColor === "white"
 }
 
-// check les cellule a coter de la case avec une boucle for qui fait id - le -26 -25 -24 -1 +1 +26 +25 +24 + appele de la fonction pour savoir si une celule morte ou vivantes
-
 function generation(){
     const button = document.getElementById("grid-button").querySelectorAll("button")
     const checkList = [-26, -25, -24, -1, 1, 24, 25, 26]
     
     button.forEach(function(element){
         
-        let countCell = 0
-
-            for(check of checkList){
+        let counts = {
+            cell: 0,
+            loop: 0
+        }
+            for(const check of checkList){
+                counts.loop++;
                 let buttonIdCheck = Number(element.id) + check
+                //console.log(buttonIdCheck)
                 const elementIdCheck = document.getElementById(`${buttonIdCheck}`)
+                //console.log(elementIdCheck)
                 const buttonId = document.getElementById(element.id)
 
                 if(elementIdCheck !== null){
                     if(checkCell(elementIdCheck)) {
-                        countCell++;
-                        if (countCell === 2 || countCell === 3) {
-                            console.log(elementIdCheck, buttonId)
-                            buttonId.style.backgroundColor = "White";
-                        } else {
-                            buttonId.style.backgroundColor = "#4b413f"
+                        counts.cell++;
+                        if (counts.loop === checkList.length) {
+                            
+                            const DeadOrAlive = counts.cell === 3
+                                || (counts.cell === 2 && checkCell(buttonId))
+                            //console.log(DeadOrAlive)
+                            if (DeadOrAlive){
+                                kohLanta.push([buttonId, "white"])
+                                buttonId.style.backgroundColor = "White"
+                            } else {
+                                kohLanta.push([buttonId, "#4b413f"])
+                                buttonId.style.backgroundColor = "#4b413f"
+                            }
+                            console.log(`Cellule ${element.id} a ${counts.cell} voisins vivants`);
                         }
                     }
                 } else{console.log("hors piste")}
         }
     })
+}
+
+function trueGeneration(list){
+    console.log(list)
+    list.filter()
 }
 
 makeAGrid(25,25)
