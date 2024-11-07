@@ -1,4 +1,8 @@
 
+const checkList = [-26, -25, -24, -1, 1, 24, 25, 26]
+const kohLanta = []
+const listToCheck = []
+
 const start = document.getElementById("Start")
 const stop = document.getElementById("Stop")
 const reset = document.getElementById("Reset")
@@ -16,7 +20,7 @@ function makeAGrid(row, column){
     mainGrid.style.gridTemplateColumns = `repeat(${column}, 30px)`
     mainGrid.style.placeContent = `center`;
 
-    for(r = 0; r < (row*column); r++) {
+    for(let r = 0; r < (row*column); r++) {
             const cell = document.createElement("button")
             cell.addEventListener("click", function(){buttonIsPressed(cell)})
 
@@ -56,7 +60,8 @@ function startButton(){
     start.style.backgroundColor = "Green";
     stop.style.background = "White";
     generation()
-    trueGeneration(kohLanta)
+    trueGeneration(listToCheck)
+    console.log(kohLanta)
 }
 
 function StopButton(){
@@ -71,49 +76,54 @@ function checkCell(element){
 // check les cellule a coter de la case avec une boucle for qui fait id - le -26 -25 -24 -1 +1 +26 +25 +24 + appele de la fonction pour savoir si une celule morte ou vivantes
 
 function generation(){
-    const button = document.getElementById("grid-button").querySelectorAll("button")
-    const checkList = [-26, -25, -24, -1, 1, 24, 25, 26]
+    const button = document.querySelectorAll(".AliveCell")
     
     button.forEach(function(element){
         
-        let counts = {
-            cell: 0,
-            loop: 0
-        }
             for(const check of checkList){
-                counts.loop++;
+                
                 let buttonIdCheck = Number(element.id) + check
-                //console.log(buttonIdCheck)
                 const elementIdCheck = document.getElementById(`${buttonIdCheck}`)
-                //console.log(elementIdCheck)
-                const buttonId = document.getElementById(element.id)
 
-                if(elementIdCheck !== null){
-                    if(checkCell(elementIdCheck)) {
-                        counts.cell++;
-                        if (counts.loop === checkList.length) {
-                            
-                            const DeadOrAlive = counts.cell === 3
-                                || (counts.cell === 2 && checkCell(buttonId))
-                            //console.log(DeadOrAlive)
-                            if (DeadOrAlive){
-                                kohLanta.push([buttonId, "white"])
-                                buttonId.style.backgroundColor = "White"
-                            } else {
-                                kohLanta.push([buttonId, "#4b413f"])
-                                buttonId.style.backgroundColor = "#4b413f"
-                            }
-                            console.log(`Cellule ${element.id} a ${counts.cell} voisins vivants`);
-                        }
-                    }
-                } else{console.log("hors piste")}
+                if(elementIdCheck !== null) {
+                    listToCheck.push(elementIdCheck.id)
+                }else{console.log("hors piste")}
         }
     })
 }
 
 function trueGeneration(list){
-    console.log(list)
-    list.filter()
+    const listIdToCheck = list.filter(function(item, pos) {return list.indexOf(item) === pos;})
+
+    let cell = 0
+    let loop = 0
+    console.log(listIdToCheck)
+    
+    for(const cellCheck of listIdToCheck){
+        for (const check of checkList){
+            loop++;
+            
+            const cellToCheck = document.getElementById((Number(cellCheck) + check))
+            const theCell = document.getElementById(Number(cellCheck))
+            
+            if (checkCell(cellToCheck)) {
+                cell++;
+            }
+            if (loop === checkList.length) {
+                const deadOrAlive = cell === 3 || cell === 2 && checkCell(theCell)
+                loop = 0
+                if (deadOrAlive) {
+                    kohLanta.push([cellCheck, "true"])
+                    cell = 0
+                } else {
+                    kohLanta.push([cellCheck, "false"])
+                    cell = 0
+                }
+            }
+        }
+    }
 }
+
+function cycle() {}
 
 makeAGrid(25,25)
