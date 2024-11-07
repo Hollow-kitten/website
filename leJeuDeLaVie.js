@@ -1,6 +1,6 @@
 
 const checkList = [-26, -25, -24, -1, 1, 24, 25, 26]
-const kohLanta = []
+let kohLanta = []
 const listToCheck = []
 
 const start = document.getElementById("Start")
@@ -61,6 +61,8 @@ function startButton(){
     stop.style.background = "White";
     generation()
     trueGeneration(listToCheck)
+    cycle(kohLanta)
+    kohLanta = []
     console.log(kohLanta)
 }
 
@@ -70,6 +72,9 @@ function StopButton(){
 }
 
 function checkCell(element){
+    if(element === null){
+        return false;
+    }
     return element.style.backgroundColor === "white"
 }
 
@@ -97,7 +102,6 @@ function trueGeneration(list){
 
     let cell = 0
     let loop = 0
-    console.log(listIdToCheck)
     
     for(const cellCheck of listIdToCheck){
         for (const check of checkList){
@@ -113,17 +117,27 @@ function trueGeneration(list){
                 const deadOrAlive = cell === 3 || cell === 2 && checkCell(theCell)
                 loop = 0
                 if (deadOrAlive) {
-                    kohLanta.push([cellCheck, "true"])
+                    kohLanta.push([cellCheck, "White"])
                     cell = 0
                 } else {
-                    kohLanta.push([cellCheck, "false"])
+                    kohLanta.push([cellCheck, "#4b413f"])
                     cell = 0
+                }
+                //de base il est pas la ct pour test
+                if (cell === 0){
+                    console.log("c quoi ca")S
                 }
             }
         }
     }
 }
 
-function cycle() {}
+function cycle(list) {
+    for(let t = 0; t < list.length; t++) {
+        const idElement = list[t][0]
+        const element = document.getElementById(idElement)
+        element.style.backgroundColor = `${list[t][1]}`
+    }
+}
 
 makeAGrid(25,25)
