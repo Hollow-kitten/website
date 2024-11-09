@@ -39,10 +39,10 @@ function makeAGrid(row, column){
 function buttonIsPressed(button) {
     if(button.style.backgroundColor === "rgb(75, 65, 63)"){
         button.style.backgroundColor = "white";
-        button.setAttribute("class", "AliveCell")
+        button.setAttribute("class", "aliveCell")
     } else {
         button.style.backgroundColor = "#4b413f";
-        button.setAttribute("class", "DeadCell")
+        button.setAttribute("class", "deadCell")
     }
 }
 
@@ -52,13 +52,13 @@ function resetcolor() {
     allbutton.forEach(function(button){
         button.style.backgroundColor = "#4b413f";
     });
-    start.style.backgroundColor = "White";
-    stop.style.background = "White";
+    start.style.backgroundColor = "white";
+    stop.style.background = "white";
 }
 
 function startButton(){
-    start.style.backgroundColor = "Green";
-    stop.style.background = "White";
+    start.style.backgroundColor = "green";
+    stop.style.background = "white";
     generation()
     trueGeneration(listToCheck)
     cycle(kohLanta)
@@ -67,8 +67,8 @@ function startButton(){
 }
 
 function StopButton(){
-    start.style.backgroundColor = "White";
-    stop.style.background = "Red";
+    start.style.backgroundColor = "white";
+    stop.style.background = "red";
 }
 
 function checkCell(element){
@@ -80,7 +80,7 @@ function checkCell(element){
 
 function generation(){
     //fetch all button
-    const button = document.querySelectorAll(".AliveCell")
+    const button = document.querySelectorAll(".aliveCell")
     
     button.forEach(function(element){
             for(const check of checkList){
@@ -117,7 +117,7 @@ function trueGeneration(list){
                 const deadOrAlive = cell === 3 || cell === 2 && checkCell(theCell)
                 loop = 0
                 if (deadOrAlive) {
-                    kohLanta.push([theCell.id , "White"])
+                    kohLanta.push([theCell.id , "white"])
                     cell = 0
                 } else {
                     kohLanta.push([theCell.id , "#4b413f"])
@@ -133,10 +133,10 @@ function cycle(list) {
         const idElement = list[t][0]
         const element = document.getElementById(idElement)
         const color = list[t][1]
-        if (color === "White"){
+        if (color === "white"){
             element.setAttribute("class", "aliveCell")
         } else {
-            element.setAttribute("class", "DeadCell")
+            element.setAttribute("class", "deadCell")
         }
         element.style.backgroundColor = color
     }
