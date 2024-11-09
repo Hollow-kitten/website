@@ -78,22 +78,22 @@ function checkCell(element){
     return element.style.backgroundColor === "white"
 }
 
-// check les cellule a coter de la case avec une boucle for qui fait id - le -26 -25 -24 -1 +1 +26 +25 +24 + appele de la fonction pour savoir si une celule morte ou vivantes
-
 function generation(){
+    //fetch all button
     const button = document.querySelectorAll(".AliveCell")
     
     button.forEach(function(element){
-        
             for(const check of checkList){
-                
+                // check 8 button around the cell
                 let buttonIdCheck = Number(element.id) + check
                 const elementIdCheck = document.getElementById(`${buttonIdCheck}`)
-
+                // if element exist push his Id
                 if(elementIdCheck !== null) {
                     listToCheck.push(elementIdCheck.id)
                 }else{console.log("hors piste")}
         }
+            //push the id of the button if the button have no cell alive around him to calcul him
+            listToCheck.push(element.id)
     })
 }
 
@@ -117,15 +117,11 @@ function trueGeneration(list){
                 const deadOrAlive = cell === 3 || cell === 2 && checkCell(theCell)
                 loop = 0
                 if (deadOrAlive) {
-                    kohLanta.push([cellCheck, "White"])
+                    kohLanta.push([theCell.id , "White"])
                     cell = 0
                 } else {
-                    kohLanta.push([cellCheck, "#4b413f"])
+                    kohLanta.push([theCell.id , "#4b413f"])
                     cell = 0
-                }
-                //de base il est pas la ct pour test
-                if (cell === 0){
-                    console.log("c quoi ca")S
                 }
             }
         }
@@ -136,7 +132,13 @@ function cycle(list) {
     for(let t = 0; t < list.length; t++) {
         const idElement = list[t][0]
         const element = document.getElementById(idElement)
-        element.style.backgroundColor = `${list[t][1]}`
+        const color = list[t][1]
+        if (color === "White"){
+            element.setAttribute("class", "aliveCell")
+        } else {
+            element.setAttribute("class", "DeadCell")
+        }
+        element.style.backgroundColor = color
     }
 }
 
