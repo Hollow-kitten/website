@@ -47,83 +47,36 @@ body {
 }
 
 .project-one {
-    border: 2px solid white; 
+    border: 2px solid white;
     display: flex;
     align-items: center;
     flex-direction: column;
+    gap: 15px;
+    column-gap: 10px;
     padding-right: 40px;
     padding-left: 30px;
+    padding-bottom: 20px;
     border-radius: 10px;
     box-shadow: 10px 10px gray;
     background-color: beige;
     color: black;
     grid-row: 1;
-    grid-column: 1;    
+    grid-column: 1;
 }
 
-.tic-tac-toe {
-    width: 120px;
+.lejeudelavie{
 }
 
-.tic-tac-toe-text1 , .tic-tac-toe-text2 {
-    font-size: 25px;
-    font-family: 'Roboto', sans-serif;
-    font-weight: bold;
-}
-
-.project-two {
-    border: 2px solid white; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding-right: 30px;
-    padding-left: 30px;
-    border-radius: 10px;
-    box-shadow: 10px 10px gray;
-    background-color: beige;
-    grid-row: 1;
-    grid-column: 2;
+.lejeudelavie-text {
     color: black;
-}
-
-.website-text1 , .website-text2 {
-    font-size: 25px;
-    font-family: 'Roboto', sans-serif;
-    font-weight: bold;
-}
-
-.website-html {
-    width: 90px;
-}
-
-.website-css {
-    width: 90px;
-}
-
-.project-three {
-    border: 2px solid white; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding-right: 40px;
-    padding-left: 40px;
-    border-radius: 10px;
-    box-shadow: 10px 10px gray;
-    background-color: beige;
-    grid-row: 1;
-    grid-column: 3;
-}
-.wip {
-    color: black;
-    font-size: 40px;
+    font-size: 30px;
     font-family: 'Roboto', sans-serif;
     font-weight: bold; 
 }
 
 .try-yourself-div {
     border: solid #0f0f0f 2px;
+    border-radius: 10px;
     background-color: cyan;
 }
 
