@@ -1,4 +1,7 @@
 
+let intervalId;
+let startAndStop = false
+
 const checkList = [-26, -25, -24, -1, 1, 24, 25, 26]
 let kohLanta = []
 const listToCheck = []
@@ -23,8 +26,6 @@ function makeAGrid(row, column){
     for(let r = 0; r < (row*column); r++) {
             const cell = document.createElement("button")
             cell.addEventListener("click", function(){buttonIsPressed(cell)})
-
-            cell.innerHTML = `${r}`
             cell.setAttribute("id", `${r}`)
             cell.style.color = "white";
             cell.style.backgroundColor = "#4b413f";
@@ -54,21 +55,28 @@ function resetcolor() {
     });
     start.style.backgroundColor = "white";
     stop.style.background = "white";
+    clearInterval(intervalId)
 }
 
 function startButton(){
+    startAndStop = true
     start.style.backgroundColor = "green";
     stop.style.background = "white";
+    intervalId = setInterval(allInOne, (300))
+}
+
+function allInOne(){
     generation()
     trueGeneration(listToCheck)
     cycle(kohLanta)
     kohLanta = []
-    console.log(kohLanta)
 }
 
 function StopButton(){
+    startAndStop = false
     start.style.backgroundColor = "white";
     stop.style.background = "red";
+    clearInterval(intervalId)
 }
 
 function checkCell(element){
