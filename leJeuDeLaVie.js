@@ -4,16 +4,17 @@ let startAndStop = false
 
 const checkList = [-26, -25, -24, -1, 1, 24, 25, 26]
 let kohLanta = []
-const listToCheck = []
+let listToCheck = []
 
 const start = document.getElementById("Start")
 const stop = document.getElementById("Stop")
 const reset = document.getElementById("Reset")
+const random = document.getElementById("Random")
 
 reset.addEventListener("click", resetcolor)
 start.addEventListener("click", startButton)
 stop.addEventListener("click", StopButton)
-
+random.addEventListener("click", randomButton)
 
 
 function makeAGrid(row, column){
@@ -49,8 +50,8 @@ function buttonIsPressed(button) {
 
 
 function resetcolor() {
-    const allbutton = document.getElementById("grid-button").querySelectorAll("button")
-    allbutton.forEach(function(button){
+    const allButton = document.getElementById("grid-button").querySelectorAll("button")
+    allButton.forEach(function(button){
         button.style.backgroundColor = "#4b413f";
     });
     start.style.backgroundColor = "white";
@@ -59,16 +60,20 @@ function resetcolor() {
 }
 
 function startButton(){
+    if (start.style.backgroundColor === "green"){
+        clearInterval(intervalId)
+    }
     startAndStop = true
     start.style.backgroundColor = "green";
     stop.style.background = "white";
-    intervalId = setInterval(allInOne, (300))
+    intervalId = setInterval(allInOne, (100))
 }
 
 function allInOne(){
     generation()
     trueGeneration(listToCheck)
     cycle(kohLanta)
+    listToCheck = []
     kohLanta = []
 }
 
@@ -77,6 +82,24 @@ function StopButton(){
     start.style.backgroundColor = "white";
     stop.style.background = "red";
     clearInterval(intervalId)
+}
+
+function randomButton(){
+    const allButton = document.getElementById("grid-button").querySelectorAll("button")
+    allButton.forEach((button)=>{
+        randomCell(button)
+    })
+}
+
+function randomCell(element) {
+    const randomInt = Math.floor(Math.random() * 4);
+    if (randomInt === 1){
+        element.style.backgroundColor = "white"
+        element.setAttribute("class", "aliveCell")
+    }else{
+        element.setAttribute("class", "deadCell")
+        element.style.backgroundColor = "rgb(75, 65, 63)"
+    }
 }
 
 function checkCell(element){
@@ -98,7 +121,7 @@ function generation(){
                 // if element exist push his Id
                 if(elementIdCheck !== null) {
                     listToCheck.push(elementIdCheck.id)
-                }else{console.log("hors piste")}
+                }
         }
             //push the id of the button if the button have no cell alive around him to calcul him
             listToCheck.push(element.id)
@@ -115,8 +138,8 @@ function trueGeneration(list){
         for (const check of checkList){
             loop++;
             
-            const cellToCheck = document.getElementById((Number(cellCheck) + check))
-            const theCell = document.getElementById(Number(cellCheck))
+            const cellToCheck = document.getElementById((+cellCheck + check))
+            const theCell = document.getElementById(+cellCheck)
             
             if (checkCell(cellToCheck)) {
                 cell++;
