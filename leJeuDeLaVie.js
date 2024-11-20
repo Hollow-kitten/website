@@ -5,19 +5,35 @@ let startAndStop = false
 const checkList = [-26, -25, -24, -1, 1, 24, 25, 26]
 let kohLanta = []
 let listToCheck = []
+let sideCell = []
 
 const start = document.getElementById("Start")
 const stop = document.getElementById("Stop")
 const reset = document.getElementById("Reset")
 const random = document.getElementById("Random")
 
-reset.addEventListener("click", resetcolor)
+reset.addEventListener("click", resetColor)
 start.addEventListener("click", startButton)
 stop.addEventListener("click", StopButton)
 random.addEventListener("click", randomButton)
 
-
 function makeAGrid(row, column){
+    for (let p = 0; p < column; p++) {
+        // a genius method to get every cell on the side of the square (c'est un peu bizzare mais ca marche)
+        const top = p
+        const left = p * row
+        const right = p * row + column - 1
+        const bottom = row * column - column + p
+        sideCell.push(top, left, right, bottom)
+    }
+    const side = sideCell.filter(function(item, pos) {return sideCell.indexOf(item) === pos;})
+    console.log(side)
+    for (const truc of side) {
+        console.log(truc)
+        //cornerCell = document.getElementById(truc)
+        //cornerCell.setAttribute("class", "corner")
+    }
+    
     const mainGrid = document.getElementById("grid-button")
     mainGrid.style.display = "grid";
     mainGrid.style.gridTemplateRows = `repeat(${row}, 30px)`
@@ -26,18 +42,22 @@ function makeAGrid(row, column){
 
     for(let r = 0; r < (row*column); r++) {
             const cell = document.createElement("button")
-            cell.addEventListener("click", function(){buttonIsPressed(cell)})
-            cell.setAttribute("id", `${r}`)
-            cell.style.color = "white";
-            cell.style.backgroundColor = "#4b413f";
-            cell.style.paddingRight = "5px";
-            cell.style.paddingLeft = "5px";
-            cell.style.paddingTop = "15px";
-            cell.style.paddingBottom = "15px";
-            mainGrid.appendChild(cell)
+            mainGrid.appendChild(atributeCell(cell, r))
     }
 }
 
+function atributeCell(cell, number) {
+    cell.addEventListener("click", function(){buttonIsPressed(cell)})
+    cell.setAttribute("id", `${number}`)
+    cell.innerHTML = `${number}`
+    cell.style.color = "white";
+    cell.style.backgroundColor = "#4b413f";
+    cell.style.paddingRight = "5px";
+    cell.style.paddingLeft = "5px";
+    cell.style.paddingTop = "15px";
+    cell.style.paddingBottom = "15px";
+    return cell
+}
 function buttonIsPressed(button) {
     if(button.style.backgroundColor === "rgb(75, 65, 63)"){
         button.style.backgroundColor = "white";
@@ -49,7 +69,7 @@ function buttonIsPressed(button) {
 }
 
 
-function resetcolor() {
+function resetColor() {
     const allButton = document.getElementById("grid-button").querySelectorAll("button")
     allButton.forEach(function(button){
         button.style.backgroundColor = "#4b413f";
