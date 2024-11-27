@@ -1,11 +1,17 @@
 
 let intervalId;
 let startAndStop = false
+let state
 
 const checkList = [-26, -25, -24, -1, 1, 24, 25, 26]
+const checkListLeft =  [-25, -24, 1, 25, 26]
+const checkListRight = [-26, -25, -1, 24, 25]
+
 let kohLanta = []
 let listToCheck = []
-let sideCell = []
+let leftAndRightCell = []
+let leftCell = []
+let rightCell = []
 
 const start = document.getElementById("Start")
 const stop = document.getElementById("Stop")
@@ -17,21 +23,13 @@ start.addEventListener("click", startButton)
 stop.addEventListener("click", StopButton)
 random.addEventListener("click", randomButton)
 
-function makeAGrid(row, column){
+function makeAGrid(row, column) {
     for (let p = 0; p < column; p++) {
-        // a genius method to get every cell on the side of the square (c'est un peu bizzare mais ca marche)
-        const top = p
         const left = p * row
         const right = p * row + column - 1
-        const bottom = row * column - column + p
-        sideCell.push(top, left, right, bottom)
-    }
-    const side = sideCell.filter(function(item, pos) {return sideCell.indexOf(item) === pos;})
-    console.log(side)
-    for (const truc of side) {
-        console.log(truc)
-        //cornerCell = document.getElementById(truc)
-        //cornerCell.setAttribute("class", "corner")
+        leftCell.push(left)
+        rightCell.push(right)
+        leftAndRightCell.push(left, right)
     }
     
     const mainGrid = document.getElementById("grid-button")
@@ -40,16 +38,16 @@ function makeAGrid(row, column){
     mainGrid.style.gridTemplateColumns = `repeat(${column}, 30px)`
     mainGrid.style.placeContent = `center`;
 
-    for(let r = 0; r < (row*column); r++) {
-            const cell = document.createElement("button")
-            mainGrid.appendChild(atributeCell(cell, r))
+    for (let r = 0; r < (row * column); r++) {
+        const cell = document.createElement("button")
+        mainGrid.appendChild(atributeCell(cell, r))
     }
 }
 
 function atributeCell(cell, number) {
     cell.addEventListener("click", function(){buttonIsPressed(cell)})
     cell.setAttribute("id", `${number}`)
-    cell.innerHTML = `${number}`
+    //cell.innerHTML = `${number}`
     cell.style.color = "white";
     cell.style.backgroundColor = "#4b413f";
     cell.style.paddingRight = "5px";
@@ -61,9 +59,11 @@ function atributeCell(cell, number) {
 function buttonIsPressed(button) {
     if(button.style.backgroundColor === "rgb(75, 65, 63)"){
         button.style.backgroundColor = "white";
+        state = "aliveCell"
         button.setAttribute("class", "aliveCell")
     } else {
         button.style.backgroundColor = "#4b413f";
+        state = "deadCell"
         button.setAttribute("class", "deadCell")
     }
 }
@@ -86,7 +86,7 @@ function startButton(){
     startAndStop = true
     start.style.backgroundColor = "green";
     stop.style.background = "white";
-    intervalId = setInterval(allInOne, (100))
+    intervalId = setInterval(allInOne, (300))
 }
 
 function allInOne(){
@@ -134,18 +134,29 @@ function generation(){
     const button = document.querySelectorAll(".aliveCell")
     
     button.forEach(function(element){
-            for(const check of checkList){
-                // check 8 button around the cell
-                let buttonIdCheck = Number(element.id) + check
-                const elementIdCheck = document.getElementById(`${buttonIdCheck}`)
-                // if element exist push his Id
-                if(elementIdCheck !== null) {
-                    listToCheck.push(elementIdCheck.id)
-                }
+        const buttonId = Number(element.id)
+        if (leftAndRightCell.includes(buttonId)){
+            if (leftCell.includes(buttonId)){
+                whatCellToCheck(element, checkListLeft)
+                
+            } else{
+                whatCellToCheck(element, checkListRight)
+            }
+        }else {
+            whatCellToCheck(element, checkList)
         }
-            //push the id of the button if the button have no cell alive around him to calcul him
-            listToCheck.push(element.id)
     })
+}
+
+function whatCellToCheck(element, list) {
+    for (const check of list) {
+        let buttonIdCheck = Number(element.id) + check
+        const elementIdCheck = document.getElementById(`${buttonIdCheck}`)
+        if (elementIdCheck !== null) {
+            listToCheck.push(elementIdCheck.id)
+        }
+        listToCheck.push(element.id)
+    }
 }
 
 function trueGeneration(list){
